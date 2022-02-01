@@ -1,0 +1,17 @@
+{%extends 'home.html'%}
+{%block title%}Posts{%endblock%}
+{%block imports%}
+<link href="css/posts.css">
+{%endblock%}
+{%block content%}
+    {%for post in posts%}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{post.tags}}</h6>
+        <p class="card-text">{{post.content}}</p>
+        <a href={{post.link}} class="card-link">Know more</a>
+        </div>
+    </div>
+    {%endfor%}
+{%endblock%}
