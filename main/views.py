@@ -15,3 +15,12 @@ def signup(request):
 
 def login(request):
     return render(request,"login.html",{})
+
+def your_posts(request):
+    return render(request,"your_posts.html",{})
+
+def profile(request):
+    return render(request,"profile.html",{})
+
+def contact(request):
+    return render(request,"contact.html",{})

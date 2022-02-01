@@ -1,7 +1,7 @@
 {%extends 'home.html'%}
 {%block title%}Posts{%endblock%}
 {%block imports%}
-<link href="css/posts.css">
+<link rel="stylesheet" href="{%static 'css/posts.css'%}" type="text/css">
 {%endblock%}
 {%block content%}
     {%for post in posts%}
