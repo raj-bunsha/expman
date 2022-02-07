@@ -1,21 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Post Something</title>
     <style>
-        .container{
-            width: 70%;
-            height:100%;
-            border: 2px solid red;
+        /* FOR EXTRA :start */
+        body {
+            background: #eee
         }
+
+        .date {
+            font-size: 11px
+        }
+
+        .comment-text {
+            font-size: 15px
+        }
+
+        .fs-12 {
+            font-size: 12px
+        }
+
+        .shadow-none {
+            box-shadow: none
+        }
+
+        .name {
+            color: #007bff
+        }
+
+        .cursor:hover {
+            color: blue
+        }
+
+        .cursor {
+            cursor: pointer
+        }
+
+        .textarea {
+            resize: none
+        }
+
+        /* END  */
     </style>
 </head>
+
 <body>
-    <div class="container">
-        this is a div
+
+
+    <!-- TRIAL FOR READ POST  -->
+    <div class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-8">
+                <div class="d-flex flex-column comment-section">
+                    <div class="bg-white p-2">
+                        <!-- AUTHOR IMAGE AND DETAILS -->
+                        <div class="d-flex flex-row user-info"><img class="rounded-circle" src="#" alt="eror"
+                                width="40">
+                            <div class="d-flex flex-column justify-content-start ml-2"><span
+                                    class="d-block font-weight-bold name">Author Name</span><span
+                                    class="date text-black-50">Date posted eg.- 20 June 2020</span></div>
+                        </div>
+                        <div class="mt-2">
+                            <p class="comment-text">Posted content. Lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Sequi alias mollitia quaerat, hic, illum fuga fugit atque, consequatur amet
+                                nesciunt maxime sint! Saepe similique ab sit quos eos optio corporis.</p>
+                        </div>
+                    </div>
+                    <!--LIKE AND COMMENT BUTTON  -->
+                    <div class="bg-white">
+                        <div class="d-flex flex-row fs-12">
+                            <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><img src="/images/like.png"
+                                    alt=""><span class="ml-1">LIKE</span>
+                            </div>
+                            <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><img
+                                    src="/images/comment.png" alt=""><span class="ml-1">Comment</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEXT AREA FOR COMMENTING SOMETHING  -->
+                    <div class="bg-light p-2">
+
+                        <!-- COMMENT SOMETHING TEXT AREA  -->
+                        <div class="d-flex flex-row align-items-start"><textarea
+                                class="form-control ml-1 shadow-none textarea" placeholder="Comment here..." rows="5"></textarea>
+                        </div>
+                        <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none"
+                                type="button">Post comment</button><button
+                                class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- TRIAL ENDS -->
+
 </body>
+
 </html>
+
+<!-- WILL REQUIRE NAV BAR ABOVE  -->
+<!-- AND COUNTER FOR SHOWING LIKES  -->
+<!-- ALSO CLICK ON COMMENT TO OPEN UP TEXT AREA AND THEN IF PRESS CANCEL INPUT TEXT SHOULD DISAPPEAR AND POST COMMENT SHOULD POST IT.  -->
