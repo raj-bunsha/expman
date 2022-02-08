@@ -10,4 +10,5 @@ urlpatterns = [
     path('my_posts', views.your_posts),
     path('profile', views.profile),
     path('contact', views.contact),
+    path('about', views.about),
 ]

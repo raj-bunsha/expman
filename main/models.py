@@ -1,3 +1,4 @@
+from operator import mod
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 # Create your models here.
@@ -43,6 +44,26 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self,app_label):
         return True
+
+class Post(models.Model):
+    author=models.ForeignKey(Account,on_delete=models.CASCADE)
+    date_created = models.DateTimeField("date published")
+    content=models.TextField()
+
+class Like(models.Model):
+    date_created = models.DateTimeField("date published")
+    author = models.ForeignKey(Account,on_delete=models.CASCADE)
+    Post=models.ForeignKey(Post,on_delete=models.CASCADE)
+
+class Comment(models.Model):
+    date_created = models.DateTimeField("date published")
+    author = models.ForeignKey(Account,on_delete=models.CASCADE)
+    Post=models.ForeignKey(Post,on_delete=models.CASCADE)
+
+class Tags(models.Model):
+    Post=models.ForeignKey(Post,on_delete=models.CASCADE)
+    tag=models.CharField(max_length=15)
+
 # class Post(models.Model):
 #     date=models.DateTimeField("date published")
 #     content = models.TextField()
