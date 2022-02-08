@@ -11,4 +11,5 @@ urlpatterns = [
     path('profile', views.profile),
     path('contact', views.contact),
     path('about', views.about),
+    path('create_post', views.create_post),
 ]

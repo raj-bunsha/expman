@@ -37,3 +37,6 @@ def contact(request):
 
 def about(request):
     return render(request,"about.html",{})
+
+def create_post(request):
+    return render(request,"create_post.html",{})
