@@ -58,6 +58,14 @@
             cursor: pointer;
             border: solid 1px #BA68C8
         }
+
+        #genderBtn {
+            margin-top: 15px;
+        }
+
+        body {
+            background: url("images/profilebg.png");
+        }
     </style>
 </head>
 
@@ -67,9 +75,8 @@
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
                         id="profileImg" width="150px"
-                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
-                        class="font-weight-bold">User Name</span><span class="text-black-50">User email</span><span>
-                    </span></div>
+                        src="images/profileMale.png">
+                </div>
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
@@ -77,47 +84,58 @@
                         <h2 class="text-right">Your Profile</h2>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control"
-                                placeholder="First Name" value=""></div>
-                        <div class="col-md-6"><label class="labels">Surname</label><input type="text"
-                                class="form-control" value="" placeholder="Last Name"></div>
+                        <div class="col-md-10"><label class="labels">User Name</label><input type="text"
+                                class="form-control" placeholder="Your Username" value=""></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
-                                class="form-control" placeholder="Your number" value=""></div>
-                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text"
-                                class="form-control" placeholder="Enter Email ID." value=""></div>
-                        <div class="col-md-12"><label class="labels">Education</label><input type="text"
-                                class="form-control" placeholder="Education" value=""></div>
+                        <div class="col-md-10"><label class="labels">Email ID</label><input type="text"
+                                class="form-control" placeholder="Enter Email ID." value="">
+                        </div>
+
+                        <!-- RADIO BUTTONS FOR GENDER START -->
+                        <div id="genderBtn">
+                            <div class="col-md-12"><label class="labels">Gender</label></div>
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="genradio" id="genradio1" autocomplete="off"
+                                    checked>
+                                <label class="btn btn-outline-primary" for="genradio1">Male</label>
+
+                                <input type="radio" class="btn-check" name="genradio" id="genradio2" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="genradio2">Female</label>
+
+                            </div>
+                        </div>
+                        <!-- END  -->
                     </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">Country</label><input type="text"
-                                class="form-control" placeholder="Country" value=""></div>
-                        <div class="col-md-6"><label class="labels">State/Region</label><input type="text"
-                                class="form-control" value="" placeholder="State"></div>
-                    </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save
-                            Profile</button></div>
                 </div>
             </div>
             <div class="col-md-4 my-5">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience">
-                        <span>
-
-                        </span>
-                        <!-- <span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span> -->
                     </div><br>
-                    <div class="col-md-12"><label class="labels">Profession</label><input type="text"
-                            class="form-control" placeholder="Your Profession" value=""></div> <br>
-                    <!-- <div class="col-md-12"><label class="labels">Tell us about you</label><input type="text"
-                            class="form-control" id="aboutUser" placeholder="About you." value="">
-                    </div> -->
+                    <!-- START FOR RADIO FOR CATEGORY  -->
+                    <div class="col-md-12"><label class="labels">Category</label></div>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="catgradio" id="catgradio1" autocomplete="off"
+                            checked>
+                        <label class="btn btn-outline-primary" for="btnradio1">Professional</label>
+
+                        <input type="radio" class="btn-check" name="catgradio" id="catgradio2" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="catgradio2">Student</label>
+                    </div>
+                    <!-- END  -->
+                    <!-- <div class="col-md-12"><label class="labels">Profession</label><input type="text"
+                            class="form-control" placeholder="Your Profession" value="">
+                    </div> <br> -->
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Tell us about you.</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="About you."></textarea>
-                      </div>
+                        <label for="exampleFormControlTextarea1">Bio</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
+                            placeholder="Tell us about you..."></textarea>
+                    </div>
                 </div>
+            </div>
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save
+                    Profile</button>
             </div>
         </div>
     </div>
