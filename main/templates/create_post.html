@@ -21,7 +21,7 @@ Post content
     #inputPost {
         display: flex;
         justify-content: center;
-        
+
     }
 
     #smt {
@@ -38,11 +38,21 @@ Post content
         width: 49%;
         font-size: 30px;
     }
+    .tags{
+        display: flex;
+       justify-content:center;
+    }
 </style>
 <script src="//cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
 {%endblock%}
 {%block content%}
 <h2 class="h2">Post Your Own!</h2>
+<h2 class="h2">Add Tags</h2>
+<div class="tags">
+    <input type="text" class="tagIp" name="" id="tag1" placeholder="Tag 1">
+    <input type="text" class="tagIp" name="" id="tag2" placeholder="Tag 2">
+    <input type="text" class="tagIp" name="" id="tag3" placeholder="Tag 3">
+</div>
 <h2 class="h2">Title</h2>
 
 <form type="POST">
