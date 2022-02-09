@@ -7,9 +7,10 @@ urlpatterns = [
     path('signup', views.signup),
     path('login', views.login),
     path('saved', views.saved),
-    path('my_posts', views.your_posts),
     path('profile', views.profile),
     path('contact', views.contact),
-    path('about', views.about),
+    path('about_goals', views.about_goals),
+    path('about_us', views.about_us),
+    path('about_team', views.about_team),
     path('create_post', views.create_post),
 ]

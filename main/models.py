@@ -47,18 +47,20 @@ class Account(AbstractBaseUser):
 
 class Post(models.Model):
     author=models.ForeignKey(Account,on_delete=models.CASCADE)
-    date_created = models.DateTimeField("date published")
+    title=models.CharField(max_length=15)
+    date_created = models.DateTimeField(auto_now_add=True)
     content=models.TextField()
 
 class Like(models.Model):
-    date_created = models.DateTimeField("date published")
+    date_created = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(Account,on_delete=models.CASCADE)
     Post=models.ForeignKey(Post,on_delete=models.CASCADE)
 
 class Comment(models.Model):
-    date_created = models.DateTimeField("date published")
+    date_created = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(Account,on_delete=models.CASCADE)
     Post=models.ForeignKey(Post,on_delete=models.CASCADE)
+    comment=models.TextField()
 
 class Tags(models.Model):
     Post=models.ForeignKey(Post,on_delete=models.CASCADE)

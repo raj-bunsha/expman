@@ -60,12 +60,12 @@
               About Us
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Our Goals</a></li>
-              <li><a class="dropdown-item" href="/about">Our Team</a></li>
+              <li><a class="dropdown-item" href="/about_goals">Our Goals</a></li>
+              <li><a class="dropdown-item" href="/about_team">Our Team</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="about.html">About Us</a></li>
+              <li><a class="dropdown-item" href="/about_us">About Us</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -74,15 +74,19 @@
         </ul>
 
         <!-- OUR SEARCH BUTTON  -->
-        <form class="d-flex">
+        <!-- <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search articles" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> -->
 
 <!-- OUR SIGNUP AND LOGIN BUTTONS -->
 <div class="mx-2">
-  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signupModal">SignUp</button>
+  {%if Account.is_authenticated%}
+    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signupModal">SignUp</button>
+  {%else%}
+    <a class="nav-link" href="/profile">Profile</a>
+  {%endif%}
   <!-- <button class="btn btn-danger" data-toggle="modal" data-target="#signupModal">SignUp</button> -->
   <!-- START FOR LOGIN -->
   <!-- Login trigger modal -->

@@ -1,12 +1,14 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate
 from .forms import RegisterForm
+from .models import Post
 # Create your views here.
 def home(request):
     return render(request,"home.html",{})
 
 def posts(request):
-    return render(request,"posts.html",{})
+    posts=Post.objects.all()
+    return render(request,"posts.html",{"posts":posts})
 
 def saved(request):
     return render(request,"saved.html",{})
@@ -35,8 +37,14 @@ def profile(request):
 def contact(request):
     return render(request,"contact.html",{})
 
-def about(request):
-    return render(request,"about.html",{})
+def about_us(request):
+    return render(request,"about_us.html",{})
+
+def about_team(request):
+    return render(request,"about_team.html",{})
+
+def about_goals(request):
+    return render(request,"about_goals.html",{})
 
 def create_post(request):
     return render(request,"create_post.html",{})

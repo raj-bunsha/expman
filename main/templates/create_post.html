@@ -25,11 +25,13 @@ Post content
 {%endblock%}
 {%block content%}
 <h2 class="h2">Post Your Own!</h2>
-    
-    <div class="d-flex flex-row align-items-start" id="inputPost"><textarea class="form-control ml-1 shadow-none textarea sizechange"
-            placeholder="Post here..." rows="5" name="editor1" id="poster"></textarea>
-    </div>
-
+    <form type="POST">
+        
+        <div class="d-flex flex-row align-items-start" id="inputPost"><textarea class="form-control ml-1 shadow-none textarea sizechange"
+                placeholder="Post here..." rows="5" name="editor1" id="poster"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
     <script>
         CKEDITOR.replace('editor1');
     </script>
