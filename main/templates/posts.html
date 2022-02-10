@@ -1,0 +1,67 @@
+{%extends 'index.html'%}
+{% load static %}
+{%block title%}Posts{%endblock%}
+{%block imports%}
+{%endblock%}
+{%block content%}
+<style>
+    .searchPostBar {
+        /* display: block; */
+        width: 50%;
+        margin: 20px auto;
+        /* flex-direction: column; */
+    }
+
+    h1 {
+        text-align: center;
+    }
+    #serBtn{
+        margin-top: 10px;   
+    }
+    #ptContent{
+        justify-content: space-around;
+    }
+</style>
+
+<h1>Posts</h1>
+
+<form class="searchPostBar">
+    <input class="form-control me-2" type="search" placeholder="Search articles" aria-label="Search">
+
+    <!-- RADIO BUTTON FOR SEARCH AS PER TAG OR TEXT  -->
+    <div class="row mb-1" id="serBtn">
+        <div class="col-md-12"><label class="labels">Search Using</label></div>
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="serradio" id="serradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="serradio1">Text</label>
+
+            <input type="radio" class="btn-check" name="serradio" id="serradio2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="serradio2">Tags</label>
+
+        </div>
+    </div>
+    <!-- OUR SEARCH BUTTON  -->
+    <button class="btn btn-outline-success" type="submit" id="srch">Search</button>
+</form>
+<div class="row mb-1" id="ptContent">
+    {%for post in posts%}
+    <div class="col-md-10">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+            id="readPost">
+            <div class="col p-4 d-flex flex-column position-static" id="ptContent"> 
+                <strong class="d-inline-block mb-2 text-primary">Design</strong>
+                <h3 class="mb-0">{{post.title}}</h3>
+                <div class="mb-1 text-muted">{{post.date_created}}</div>
+                <p class="card-text mb-auto">{{post.content}}</p>
+
+                <!-- now user will click continue reading to redirect to that topic  -->
+                <a href="#" class="stretched-link">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{%endblock%}

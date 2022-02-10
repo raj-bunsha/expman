@@ -1,0 +1,94 @@
+{%extends "index.html"%}
+{% load static %}
+{%block title%}home{%endblock%}
+{%block imports%}{%endblock%}
+{%block content%}
+<!-- OUR TRIAL FOR MODALS BEGINS -->
+  <!-- <button class="btn btn-danger" data-toggle="modal" data-target="#loginModal">Login</button> -->
+
+  <!-- OUR TRIAL FOR MODALS SHUTS DOWN  -->
+
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner carousel-fade">
+      <div class="carousel-item active">
+        <img src="{%static '/images_home/1.png'%}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="homeUnderImg text-white" id="carsCol" >Welcome to WEBSITE NAME.</p>
+          <a href="/posts" button class="btn btn-secondary">Read Intersting Topics!</a>
+          <a href="/create_post" class="btn btn-secondary">Post Your Own!</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{%static '/images_home/3.png'%}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="homeUnderImg text-dark">"Experience, Learn, Share"</p>
+          <a href="/posts" button class="btn btn-primary">Read Intersting Topics!</a>
+          <a href="/create_post" class="btn btn-primary">Post Your Own!</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{%static '/images_home/2.png'%}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="homeUnderImg text-dark">"Get ready to be surprised" - Rohit</p>
+          <a href="/posts" button class="btn btn-light">Read Intersting Topics!</a>
+          <a href="/create_post" class="btn btn-light">Post Your Own!</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- OUR BOTTOM OF TRENDING PAGES  -->
+  <h1 class="trendHead">Trending Topics</h1>
+  <div class="container my-3">
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">IIITB</strong>
+            <h3 class="mb-0">Featured post</h3>
+            <div class="mb-1 text-muted">Jan 26</div>
+            <p class="card-text mb-auto">The Director talks about his Experience in IIITB.</p>
+
+            <!-- now user will click continue reading to redirect to that topic  -->
+            <a href="#" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-success">Design</strong>
+            <h3 class="mb-0">Raj Ki Dua hain</h3>
+            <div class="mb-1 text-muted">Feb 2</div>
+            <p class="mb-auto">Rohit designs home page for project share his Experience.</p>
+
+            <!-- similarly user will click continue reading to redirect to that topic  -->
+            <a href="#" class="stretched-link">Continue reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}
