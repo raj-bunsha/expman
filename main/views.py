@@ -1,9 +1,26 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
+from django.contrib.auth import authenticate
+from flask_login import login_required
 from .forms import RegisterForm
 from .models import Post
 # Create your views here.
 def home(request):
+    if request.POST and 'signup' in request.POST:
+        a,b=signup(request)
+        print(b)
+        if not a:
+            return render(request,"home.html",{"error":b,"show":True})
+        else:
+            return render(request,"home.html",{"success":" ","show":True})
+    if request.POST and 'login' in request.POST:
+        a,b=login(request)
+        print(a)
+        if not a:
+            return render(request,"home.html",{"error":b,"show":True})
+        else:
+            return render(request,"home.html",{"success":" ","show":True})
     return render(request,"home.html",{})
 
 def posts(request):
@@ -14,19 +31,26 @@ def saved(request):
     return render(request,"saved.html",{})
 
 def signup(request):
-    if request.method=="POST":
-        form=RegisterForm(request.post)
-        if form.is_valid():
-            form.save()
-            email=form.cleaned_data.get('email')
-            raw_password=form.cleaned_data.get('password')
-            account=authenticate(email='email',password='password')
-            login(request,account)
-            return redirect('home')
-    return render(request,"signup.html",{})
+    context={}
+    
+    form=RegisterForm({"username":request.POST["username"],"email":request.POST["email"],"password1":request.POST["password1"],"password2":request.POST["password2"]})
+    if form.is_valid():
+        form.save()
+        email=form.cleaned_data.get('email')
+        raw_password=form.cleaned_data.get('password1')
+        account=authenticate(email=email,password=raw_password)
+        auth_login(request,account)
+        return True,{}
+    else:
+        return False,form.errors
+    
 
 def login(request):
-    return render(request,"login.html",{})
+    account=authenticate(email=request.POST.get('email'),password=request.POST.get("password"))
+    if account:
+        return True,""
+    else:
+        return False,"Invalid Email Adress/Password"
 
 def your_posts(request):
     return render(request,"your_posts.html",{})
@@ -48,3 +72,7 @@ def about_goals(request):
 
 def create_post(request):
     return render(request,"create_post.html",{})
+
+def logout(request):
+    auth_logout(request)
+    return redirect('home')

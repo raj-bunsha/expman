@@ -81,11 +81,12 @@
 
 <!-- OUR SIGNUP AND LOGIN BUTTONS -->
 <div class="mx-2">
-  {%if Account.is_authenticated%}
+  {%if not request.user.is_authenticated%}
     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signupModal">SignUp</button>
   {%else%}
     <a class="nav-link" href="/profile">Profile</a>
+    <a class="nav-link" href="/logout">Logout</a>
   {%endif%}
   <!-- <button class="btn btn-danger" data-toggle="modal" data-target="#signupModal">SignUp</button> -->
   <!-- START FOR LOGIN -->
@@ -100,25 +101,22 @@
         </div>
         <div class="modal-body">
           <!-- POP UP FOR LOGIN PAGE  -->
-          <form>
+          <form method="POST" action="{% url 'home' %}">
             <!-- FOR EMAIL ADDRESS  -->
+            {%csrf_token%}
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <label for="exampleInputEmail1" class="form-label" name="">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <!-- FOR PASSWORD  -->
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <label for="exampleInputPassword1" class="form-label" >Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
             </div>
             <!-- FOR CHECKBOX OF REMEMBER ME  -->
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-            </div>
             <!-- TO SUBMIT DATA  -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="login">Submit</button>
           </form>
         </div>
         <div class="modal-footer">
@@ -138,25 +136,30 @@
         </div>
         <div class="modal-body">
           <!-- POP UP FOR SIGNUP PAGE  -->
-          <form>
+          <form method="POST" action="{% url 'home' %}">
+            {%csrf_token%}
             <!-- FOR NAME  -->
             <div class="mb-3">
               <label for="exampleInputEmail1" required class="form-label">Your Name</label>
-              <input type="text" class="form-control" id="textInput">
+              <input type="text" class="form-control" id="textInput" name="username">
             </div>
             <!-- FOR EMAIL  -->
             <div class="mb-3">
-              <label for="InputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+              <label for="InputEmail1" class="form-label" >Email address</label>
+              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" name="email">
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <!-- FOR PASSWORD  -->
             <div class="mb-3">
               <label for="InputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="InputPassword1">
+              <input type="password" class="form-control" id="InputPassword1" name="password1">
+            </div>
+            <div class="mb-3">
+              <label for="InputPassword2" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="InputPassword2" name="password2">
             </div>
             <!-- TO SUBMIT DATA TO BACKEND TO SIGNUP  -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="signup">Submit</button>
           </form>
         </div>
         <div class="modal-footer">
@@ -169,6 +172,19 @@
       </div>
     </div>
   </nav>
+  {%if show%}
+  {%if error%}
+  <div class="alert alert-danger alter-dismissible fade show" role="alert">
+    {{ error }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  {%elif success%}
+  <div class="alert alert-success alter-dismissible fade show" role="alert">
+    SUCCESSFULLY LOGIN/SIGNUP
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  {%endif%}
+  {%endif%}
   {%block content%}{%endblock%}
   <!-- Optional JavaScript; choose one of the two! -->
 
