@@ -3,15 +3,18 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from flask_login import login_required
-from .forms import RegisterForm
+from main.forms import RegisterForm
 from .models import *
 # Create your views here.
 def home(request):
     if request.POST and 'signup' in request.POST:
         a,b=signup(request)
-        print(b)
+        errors=[]
+        for field in b:
+            for error in field.errors:
+                errors.append(error)
         if not a:
-            return render(request,"home.html",{"error":b,"show":True})
+            return render(request,"home.html",{"error":errors,"show":True})
         else:
             return render(request,"home.html",{"success":" ","show":True})
     if request.POST and 'login' in request.POST:
@@ -31,9 +34,7 @@ def saved(request):
     return render(request,"saved.html",{})
 
 def signup(request):
-    context={}
-    
-    form=RegisterForm({"username":request.POST["username"],"email":request.POST["email"],"password1":request.POST["password1"],"password2":request.POST["password2"]})
+    form=RegisterForm(request.POST)
     if form.is_valid():
         form.save()
         email=form.cleaned_data.get('email')
@@ -42,7 +43,7 @@ def signup(request):
         auth_login(request,account)
         return True,{}
     else:
-        return False,form.errors
+        return False,form
     
 
 def login(request):
