@@ -50,7 +50,7 @@ def login(request):
     if account:
         return True,""
     else:
-        return False,"Invalid Email Adress/Password"
+        return False,"Invalid Email Address/Password"
 
 def your_posts(request):
     return render(request,"your_posts.html",{})
