@@ -21,6 +21,13 @@
     #ptContent{
         justify-content: space-around;
     }
+    /* p{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    } */
 </style>
 
 <h1>Posts</h1>
@@ -52,7 +59,7 @@
                 <strong class="d-inline-block mb-2 text-primary">Design</strong>
                 <h3 class="mb-0">{{post.title}}</h3>
                 <div class="mb-1 text-muted">{{post.date_created}}</div>
-                <p class="card-text mb-auto">{{post.content}}</p>
+                <p class="card-text mb-auto">{{post.content|safe|truncatechars:500}}</p>
 
                 <!-- now user will click continue reading to redirect to that topic  -->
                 <a href="#" class="stretched-link">Continue reading</a>
