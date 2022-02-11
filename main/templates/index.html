@@ -34,6 +34,9 @@
     /* #carsCol{
       color-scheme: white;
     } */
+    .alert-danger{
+      margin: 0px;
+    }
   </style>
   {%block imports%}{%endblock%}
   <title>{%block title%}{%endblock%}</title>
@@ -174,12 +177,12 @@
   </nav>
   {%if show%}
   {%if error%}
-  <div class="alert alert-danger alter-dismissible fade show" role="alert">
+  <div class="alert alert-danger alter-dismissible fade show rmBorder" role="alert">
     {{ error }}
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
   </div>
   {%elif success%}
-  <div class="alert alert-success alter-dismissible fade show" role="alert">
+  <div class="alert alert-success alter-dismissible fade show rmBorder" role="alert">
     Login/Sign up Successful
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
   </div>
