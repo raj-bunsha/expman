@@ -17,6 +17,12 @@ Post content
         color: rgb(0, 0, 0);
         opacity: 75%;
     }
+    .h3 {
+        text-align: center;
+        text-decoration: underline;
+        color: rgb(0, 0, 0);
+        opacity: 75%;
+    }
 
     #inputPost {
         display: flex;
@@ -47,27 +53,30 @@ Post content
 {%endblock%}
 {%block content%}
 <h2 class="h2">Post Your Own!</h2>
-<h2 class="h2">Add Tags</h2>
-<div class="tags">
-    <input type="text" class="tagIp" name="" id="tag1" placeholder="Tag 1">
-    <input type="text" class="tagIp" name="" id="tag2" placeholder="Tag 2">
-    <input type="text" class="tagIp" name="" id="tag3" placeholder="Tag 3">
-</div>
-<h2 class="h2">Title</h2>
 
-<form type="POST">
+
+<form method="POST">
+    {%csrf_token%}
+    <h3 class="h3">Add Tags</h2>
+        <div class="tags">
+            <input type="text" class="tagIp" name="tag1" id="tag1" placeholder="Tag 1">
+            <input type="text" class="tagIp" name="tag2" id="tag2" placeholder="Tag 2">
+            <input type="text" class="tagIp" name="tag3" id="tag3" placeholder="Tag 3">
+        </div>
+        <h3 class="h3">Title</h2>
     <div>
-        <input type="text" placeholder="Title..." id="postTle">
+        <input type="text" placeholder="Title..." id="postTle" required name="title">
     </div>
+    <h3 class="h3">Content</h2>
     <div class="d-flex flex-row align-items-start" id="inputPost"><textarea
-            class="form-control ml-1 shadow-none textarea sizechange" placeholder="Post here..." rows="5" name="editor1"
-            id="poster"></textarea>
+            class="form-control ml-1 shadow-none textarea sizechange" placeholder="Post here..." rows="5"
+            id="poster" name="content"></textarea>
     </div>
 
     <button type="submit" id="smt">Submit Post</button>
 </form>
 <script>
-    CKEDITOR.replace('editor1');
+    CKEDITOR.replace('content');
 </script>
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
