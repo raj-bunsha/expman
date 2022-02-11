@@ -4,7 +4,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from flask_login import login_required
 from .forms import RegisterForm
-from .models import Post
+from .models import *
 # Create your views here.
 def home(request):
     if request.POST and 'signup' in request.POST:
@@ -72,6 +72,14 @@ def about_goals(request):
     return render(request,"about_goals.html",{})
 
 def create_post(request):
+    if request.POST:
+        data=request.POST
+        t=Post(author=request.user,title=data.get('title'),content=data.get('content'))
+        a,b,c=Tags(Post=t,tag=data.get('tag1')),Tags(Post=t,tag=data.get('tag2')),Tags(Post=t,tag=data.get('tag3'))
+        t.save()
+        a.save()
+        b.save()
+        c.save()
     return render(request,"create_post.html",{})
 
 def logout(request):
