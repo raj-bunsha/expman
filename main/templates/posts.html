@@ -25,17 +25,17 @@
 
 <h1>Posts</h1>
 
-<form class="searchPostBar">
-    <input class="form-control me-2" type="search" placeholder="Search articles" aria-label="Search">
+<form class="searchPostBar" method="GET" action="{url 'post'}">
+    <input class="form-control me-2" type="search" placeholder="Search articles" aria-label="Search" name="search">
 
     <!-- RADIO BUTTON FOR SEARCH AS PER TAG OR TEXT  -->
     <div class="row mb-1" id="serBtn">
         <div class="col-md-12"><label class="labels">Search Using</label></div>
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="serradio" id="serradio1" autocomplete="off" checked>
+            <input type="radio" class="btn-check" name="Text" id="serradio1" autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="serradio1">Text</label>
 
-            <input type="radio" class="btn-check" name="serradio" id="serradio2" autocomplete="off">
+            <input type="radio" class="btn-check" name="Tag" id="serradio2" autocomplete="off">
             <label class="btn btn-outline-primary" for="serradio2">Tags</label>
 
         </div>

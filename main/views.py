@@ -48,6 +48,7 @@ def signup(request):
 def login(request):
     account=authenticate(email=request.POST.get('email'),password=request.POST.get("password"))
     if account:
+        auth_login(request,account)
         return True,""
     else:
         return False,"Invalid Email Address/Password"
