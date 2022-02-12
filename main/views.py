@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
-from flask_login import login_required
 from main.forms import RegisterForm
 from .models import *
 from django.contrib.auth.decorators import login_required
@@ -28,15 +27,19 @@ def home(request):
     return render(request,"home.html",{})
 
 def posts(request):
+    show=""
     if request.method=="GET" and 'searchb' in request.GET:
         using,search=request.GET.get('using'),request.GET.get('search')
+        show=search
         if using=="Tags":
-            posts=Post.tags_set.all().filter(tag__contains=search)
+            posts=[]
+            for i in Tags.objects.filter(tag__contains=search):
+                posts.append(i.Post)
         if using=="Text":
             posts=Post.objects.filter(content__contains=search)
     else:
-        posts=Post.objects.all()
-    return render(request,"posts.html",{"posts":posts})
+        posts=Post.objects.all()[::-1]
+    return render(request,"posts.html",{"posts":posts,"show":show})
 
 def saved(request):
     return render(request,"saved.html",{})
