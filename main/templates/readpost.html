@@ -3,7 +3,7 @@
 {%endblock%}
 {%block imports%}
 <style>
-    .ttleRead{
+    .ttleRead {
         display: flex;
         justify-content: center;
         text-decoration: underline;
@@ -21,10 +21,12 @@
         display: flex;
         justify-content: center;
     }
-    .sketchy{
+
+    .sketchy {
         margin: 10px auto;
         width: 80%;
     }
+
     .contentRead {
         padding: 4rem 8rem;
         display: inline-block;
@@ -51,34 +53,89 @@
         border-radius: 1% 1% 2% 4%/2% 6% 5% 4%;
         margin: 5px auto;
     }
-    .cmtReadPost{
+
+    .cmtReadPost {
         margin: 30px;
         display: flex;
         justify-content: center;
     }
-    #cometRP{
+
+    #cometRP {
         padding: 0px 10px;
+    }
+
+    #sbtCmt {
+        display: inline;
+        margin: 0px 15px;
+    }
+
+    .cmtSbt {
+        width: 75%;
+        margin: 0px auto;
+    }
+
+    .container {
+        margin-bottom: 20px;
     }
 </style>
 {%endblock%}
 {%block content%}
 <h1 class="ttleRead">{{post.title}}</h1>
-    <div class="tagsRead">
-        <div class="p-3 mb-2 bg-danger text-white">{{post.tags_set.all.0.tag}}</div>
-        <div class="p-3 mb-2 bg-warning text-white">{{post.tags_set.all.1.tag}}</div>
-        <div class="p-3 mb-2 bg-info text-white">{{post.tags_set.all.2.tag}}</div>
+<div class="tagsRead">
+    <div class="p-3 mb-2 bg-danger text-white">{{post.tags_set.all.0.tag}}</div>
+    <div class="p-3 mb-2 bg-warning text-white">{{post.tags_set.all.1.tag}}</div>
+    <div class="p-3 mb-2 bg-info text-white">{{post.tags_set.all.2.tag}}</div>
+</div>
+<div class="sketchy">
+    <div class="contentRead">
+        <h3>{{post.author.username}}</h3>
+        <p>{{post.date_created}}</p>
+        <p class="bodyRead"> {{post.content|safe}} </p>
     </div>
-    <div class="sketchy">
-        <div class="contentRead">
-            <h3>{{post.author.username}}</h3>
-            <p>{{post.date_created}}</p>
-            <p class="bodyRead"> {{post.content|safe}}
+</div>
+<div class="cmtReadPost">
+    <textarea name="cmtreadPost" id="cometRP" cols="190" rows="3" placeholder="Comment Something..."></textarea>
+</div>
+<div class="cmtReadPost">
+    <img
+        src="https://img.icons8.com/external-justicon-flat-justicon/32/000000/external-like-notifications-justicon-flat-justicon.png" />
+    <span>7</span>
+    <div id="sbtCmt">
+        <button class="btn btn-primary profile-button" type="button">Submit Comment</button>
+    </div>
+</div>
+
+<div style="display:flex; justify-content:center">
+    <h5>Recent comments</h5>
+</div>
+
+
+<!-- TRIAL FOR RECENT COMMENTS  -->
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user flex-row align-items-center">
+                        <span><small class="font-weight-bold text-primary">User name</small></span>
+
+                        <div>
+                            <small class="font-weight-bold">User comment Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Eum, officiis odio. Quaerat tenetur nobis temporibus, quo expedita,
+                                corporis dolores amet odio consectetur cumque et velit natus. Hic, eveniet iure!
+                                Ducimus. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia, corrupti
+                                voluptatum enim nisi quasi iure optio eos hic sequi tempora. Lorem ipsum dolor sit amet
+                                consectetur adipisicing elit. Voluptates dolorem beatae expedita repudiandae laborum
+                                cupiditate eius, facilis officiis iusto vitae!</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="cmtReadPost">
-        <textarea name="cmtreadPost" id="cometRP" cols="190" rows="3" placeholder="Comment Something..."></textarea>
-    </div>
-    <!-- Option 1: Bootstrap Bundle with Popper
+</div>
+<!-- TRIAL FOR RECENT COMMNETS END  -->
+<!-- Option 1: Bootstrap Bundle with Popper
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script> -->
