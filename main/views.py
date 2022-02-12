@@ -29,10 +29,13 @@ def home(request):
 
 def posts(request):
     if request.method=="GET" and 'searchb' in request.GET:
-        print(request.GET)
+        using,search=request.GET.get('using'),request.GET.get('search')
+        if using=="Tags":
+            posts=Post.tags_set.all().filter(tag__contains=search)
+        if using=="Text":
+            posts=Post.objects.filter(content__contains=search)
     else:
-        pass
-    posts=Post.objects.all()
+        posts=Post.objects.all()
     return render(request,"posts.html",{"posts":posts})
 
 def saved(request):
