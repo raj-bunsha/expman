@@ -17,6 +17,7 @@ def home(request):
         if not a:
             return render(request,"home.html",{"error":"<br>".join(errors),"show":True})
         else:
+            return redirect("profile")
             return render(request,"home.html",{"success":" ","show":True})
     if request.POST and 'login' in request.POST and not request.user.is_authenticated:
         a,b=login(request)
@@ -31,6 +32,10 @@ def posts(request):
     if request.method=="GET" and 'searchb' in request.GET:
         using,search=request.GET.get('using'),request.GET.get('search')
         show=search
+        if request.user:
+            Search_history(search=search,user=request.user.username).save()
+        else:
+            Search_history(search=search,user="Anonymus").save()
         if using=="Tags":
             posts=[]
             for i in Tags.objects.filter(tag__contains=search):
@@ -40,9 +45,6 @@ def posts(request):
     else:
         posts=Post.objects.all()[::-1]
     return render(request,"posts.html",{"posts":posts,"show":show})
-
-def saved(request):
-    return render(request,"saved.html",{})
 
 def signup(request):
     form=RegisterForm(request.POST)
@@ -69,6 +71,22 @@ def your_posts(request):
     return render(request,"your_posts.html",{})
 
 def profile(request):
+    if request.POST:
+        gender=request.POST.get("genradio")
+        cat=request.POST.get("cat")
+        if gender=="male":
+            gender="M"
+        else:
+            gender="F"
+        if cat=="prof.":
+            cat="P"
+        else:
+            cat="S"
+        t=Account.objects.get(id=request.user.id)
+        t.gender=gender
+        t.profession=cat
+        t.bio=request.POST.get('bio')
+        t.save()
     return render(request,"profile.html",{})
 
 def contact(request):
@@ -98,7 +116,8 @@ def create_post(request):
         c.save()
     return render(request,"create_post.html",{})
 
-
+def error1(request):
+    return render(request,"error.html",{})
 
 @login_required
 def logout(request):
