@@ -58,6 +58,11 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/posts">Posts</a>
           </li>
+          {%if request.user.is_authenticated%}
+          <li class="nav-item">
+            <a class="nav-link" href="contact">Create new</a>
+          </li>
+          {%endif%}
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"

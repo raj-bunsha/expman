@@ -28,6 +28,10 @@ def home(request):
     return render(request,"home.html",{})
 
 def posts(request):
+    if request.method=="GET" and 'searchb' in request.GET:
+        print(request.GET)
+    else:
+        pass
     posts=Post.objects.all()
     return render(request,"posts.html",{"posts":posts})
 
@@ -84,6 +88,8 @@ def create_post(request):
         b.save()
         c.save()
     return render(request,"create_post.html",{})
+
+
 
 @login_required
 def logout(request):

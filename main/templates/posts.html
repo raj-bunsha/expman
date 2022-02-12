@@ -37,22 +37,25 @@
 <h1>Posts</h1>
 
 <form class="searchPostBar" method="GET" action="{%url 'post'%}">
-    <input class="form-control me-2" type="search" placeholder="Search articles" aria-label="Search" name="search">
-
+    <div class="form-group input-group">
+        <input class="form-control me-2" type="search" placeholder="Search articles" aria-label="Search" name="search">
+        <button class="btn btn-outline-success" type="submit" id="srch" name="searchb">Search</button>
+    </div>
+    
     <!-- RADIO BUTTON FOR SEARCH AS PER TAG OR TEXT  -->
     <div class="row mb-1" id="serBtn">
         <div class="col-md-12"><label class="labels">Search Using</label></div>
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="Text" id="serradio1" autocomplete="off" checked>
+            <input type="radio" class="btn-check" name="using" id="serradio1" autocomplete="off" checked value="Text">
             <label class="btn btn-outline-primary" for="serradio1">Text</label>
 
-            <input type="radio" class="btn-check" name="Tag" id="serradio2" autocomplete="off">
+            <input type="radio" class="btn-check" name="using" id="serradio2" autocomplete="off" value="Tags">
             <label class="btn btn-outline-primary" for="serradio2">Tags</label>
 
         </div>
     </div>
     <!-- OUR SEARCH BUTTON  -->
-    <button class="btn btn-outline-success" type="submit" id="srch">Search</button>
+    
 </form>
 <div class="row mb-1" id="ptContent">
     {%for post in posts%}
