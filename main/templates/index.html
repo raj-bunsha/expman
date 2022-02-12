@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
+  <!-- changes_r meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -145,23 +145,23 @@
             {%csrf_token%}
             <!-- FOR NAME  -->
             <div class="mb-3">
-              <label for="exampleInputEmail1" required class="form-label">Your Name</label>
-              <input type="text" class="form-control" id="textInput" name="username" required>
+              <label for="exampleInputEmail1" changes_r class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="textInput" name="username" changes_r>
             </div>
             <!-- FOR EMAIL  -->
             <div class="mb-3">
               <label for="InputEmail1" class="form-label" >Email address</label>
-              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" name="email" required>
+              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" name="email" changes_r>
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <!-- FOR PASSWORD  -->
             <div class="mb-3">
               <label for="InputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="InputPassword1" name="password1" required>
+              <input type="password" class="form-control" id="InputPassword1" name="password1" changes_r>
             </div>
             <div class="mb-3">
-              <label for="InputPassword2" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" id="InputPassword2" name="password2" required>
+              <label for="InputPassword2" class="form-label">Password</label>
+              <input type="password" class="form-control" id="InputPassword2" name="password2" changes_r>
             </div>
             <!-- TO SUBMIT DATA TO BACKEND TO SIGNUP  -->
             <button type="submit" class="btn btn-primary" name="signup">Submit</button>
@@ -179,10 +179,12 @@
   </nav>
   {%if show%}
   {%if error%}
+  {%for er in error%}
   <div class="alert alert-danger alter-dismissible fade show rmBorder" role="alert">
-    {{ error }}
+    {{ er }}
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
   </div>
+  {%endfor%}
   {%elif success%}
   <div class="alert alert-success alter-dismissible fade show rmBorder" role="alert">
     Login/Sign up Successful
