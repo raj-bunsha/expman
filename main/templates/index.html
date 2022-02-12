@@ -179,12 +179,12 @@
   </nav>
   {%if show%}
   {%if error%}
-  {%for er in error%}
+  
   <div class="alert alert-danger alter-dismissible fade show rmBorder" role="alert">
-    {{ er }}
+    {{error|safe}}
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
   </div>
-  {%endfor%}
+  
   {%elif success%}
   <div class="alert alert-success alter-dismissible fade show rmBorder" role="alert">
     Login/Sign up Successful
