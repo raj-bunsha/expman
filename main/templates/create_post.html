@@ -17,6 +17,7 @@ Post content
         color: rgb(0, 0, 0);
         opacity: 75%;
     }
+
     .h3 {
         text-align: center;
         text-decoration: underline;
@@ -44,9 +45,15 @@ Post content
         width: 49%;
         font-size: 30px;
     }
-    .tags{
+
+    .tags {
         display: flex;
-       justify-content:center;
+        justify-content: center;
+    }
+
+    .nav-link {
+        color: #FFFFFF;
+        display: inline;
     }
 </style>
 <script src="//cdn.ckeditor.com/4.17.1/full/ckeditor.js"></script>
@@ -64,16 +71,16 @@ Post content
             <input type="text" class="tagIp" name="tag3" id="tag3" placeholder="Tag 3">
         </div>
         <h3 class="h3">Title</h2>
-    <div>
-        <input type="text" placeholder="Title..." id="postTle" required name="title">
-    </div>
-    <h3 class="h3">Content</h2>
-    <div class="d-flex flex-row align-items-start" id="inputPost"><textarea
-            class="form-control ml-1 shadow-none textarea sizechange" placeholder="Post here..." rows="5"
-            id="poster" name="content"></textarea>
-    </div>
+            <div>
+                <input type="text" placeholder="Title..." id="postTle" required name="title">
+            </div>
+            <h3 class="h3">Content</h2>
+                <div class="d-flex flex-row align-items-start" id="inputPost"><textarea
+                        class="form-control ml-1 shadow-none textarea sizechange" placeholder="Post here..." rows="5"
+                        id="poster" name="content"></textarea>
+                </div>
 
-    <button type="submit" id="smt">Submit Post</button>
+                <button type="submit" id="smt">Submit Post</button>
 </form>
 <script>
     CKEDITOR.replace('content');
