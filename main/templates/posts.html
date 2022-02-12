@@ -49,6 +49,7 @@
     </div>
     <!-- OUR SEARCH BUTTON  -->
     <button class="btn btn-outline-success" type="submit" id="srch">Search</button>
+    <button href="create_post.html" class="btn btn-outline-primary" type="reset" id="pst">Post something.</button>
 </form>
 <div class="row mb-1" id="ptContent">
     {%for post in posts%}
@@ -58,6 +59,12 @@
             <div class="col p-4 d-flex flex-column position-static" id="ptContent"> 
                 <strong class="d-inline-block mb-2 text-primary">Design</strong>
                 <h3 class="mb-0">{{post.title}}</h3>
+
+                <!-- RAJ WILL ENTER AUTHOR NAME HERE -->
+
+                <div class="mb-1 text-muted">Author's name</div>
+
+                <!-- RAJ WILL ENTER AUTHOR NAME HERE ENDS. -->
                 <div class="mb-1 text-muted">{{post.date_created}}</div>
                 <p class="card-text mb-auto">{{post.content|safe|truncatechars:500}}</p>
 
