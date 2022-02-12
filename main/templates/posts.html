@@ -55,12 +55,7 @@
         </div>
     </div>
     <!-- OUR SEARCH BUTTON  -->
-<<<<<<< HEAD
-    <button class="btn btn-outline-success" type="submit" id="srch">Search</button>
     <button href="create_post.html" class="btn btn-outline-primary" type="reset" id="pst">Post something.</button>
-=======
-    
->>>>>>> b040f23bed2b9a65589dc9bd7b05be061d6f2ba1
 </form>
 <div class="row mb-1" id="ptContent">
     {%for post in posts%}
@@ -75,7 +70,7 @@
 
                 <!-- RAJ WILL ENTER AUTHOR NAME HERE -->
 
-                <div class="mb-1 text-muted">Author's name</div>
+                <div class="mb-1 text-muted">{{post.author}}</div>
 
                 <!-- RAJ WILL ENTER AUTHOR NAME HERE ENDS. -->
                 <div class="mb-1 text-muted">{{post.date_created}}</div>

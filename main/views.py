@@ -84,7 +84,7 @@ def about_goals(request):
 def create_post(request):
     if request.POST:
         data=request.POST
-        t=Post(author=request.user,title=data.get('title'),content=data.get('content'))
+        t=Post(author=request.user.username,title=data.get('title'),content=data.get('content'))
         a,b,c=Tags(Post=t,tag=data.get('tag1')),Tags(Post=t,tag=data.get('tag2')),Tags(Post=t,tag=data.get('tag3'))
         t.save()
         a.save()
