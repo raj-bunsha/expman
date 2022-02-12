@@ -15,16 +15,19 @@
     h1 {
         text-align: center;
     }
-    #serBtn{
-        margin-top: 10px;   
+
+    #serBtn {
+        margin-top: 10px;
     }
-    #ptContent{
+
+    #ptContent {
         justify-content: space-around;
     }
-    #readpost
-    {
-        max-height:10px;
+
+    #readpost {
+        max-height: 10px;
     }
+
     /* p{
         overflow: hidden;
         text-overflow: ellipsis;
@@ -32,9 +35,15 @@
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
     } */
-    .brt{
+    .brt {
         display: inline;
-        margin:0px 5px;
+        margin: 0px 5px;
+    }
+
+    .needsInline {
+        display: inline;
+        margin:0px 2px;
+
     }
 </style>
 
@@ -45,7 +54,7 @@
         <input class="form-control me-2" type="search" placeholder="Search articles" aria-label="Search" name="search">
         <button class="btn btn-outline-success" type="submit" id="srch" name="searchb">Search</button>
     </div>
-    
+
     <!-- RADIO BUTTON FOR SEARCH AS PER TAG OR TEXT  -->
     <div class="row mb-1" id="serBtn">
         <div class="col-md-12"><label class="labels">Search Using</label></div>
@@ -62,17 +71,18 @@
 </form>
 <div class="row mb-1" id="ptContent">
     {%if show%}
-        <h1>You Searched for:{{show}}</h1>
+    <h1>You Searched for:{{show}}</h1>
     {%endif%}
     {%for post in posts%}
     <div class="col-md-10">
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
             id="readPost">
-            <div class="col p-4 d-flex flex-column position-static" id="ptContent"> 
-                <b class="d-inline-block mb-2 text-danger">{{post.tags_set.all.0.tag}}</b>
-                <b class="d-inline-block mb-2 text-warning">{{post.tags_set.all.1.tag}}</b>
-                <b class="d-inline-block mb-2 text-success">{{post.tags_set.all.2.tag}}</b>
-                
+            <div class="col p-4 d-flex flex-column position-static" id="ptContent">
+                <div>
+                    <b class="mb-2 text-danger needsInline">{{post.tags_set.all.0.tag}}</b>
+                    <b class="mb-2 text-warning needsInline">{{post.tags_set.all.1.tag}}</b>
+                    <b class="mb-2 text-success needsInline">{{post.tags_set.all.2.tag}}</b>
+                </div>
                 <h3 class="mb-0">{{post.title}}</h3>
 
                 <!-- RAJ WILL ENTER AUTHOR NAME HERE -->
