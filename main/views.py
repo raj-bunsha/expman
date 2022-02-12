@@ -5,21 +5,22 @@ from django.contrib.auth import authenticate
 from flask_login import login_required
 from main.forms import RegisterForm
 from .models import *
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 def home(request):
-    if request.POST and 'signup' in request.POST:
+    if request.POST and 'signup' in request.POST and not request.user.is_authenticated:
         a,b=signup(request)
         errors=[]
         for field in b:
             for error in field.errors:
                 errors.append(error)
         if not a:
-            return render(request,"home.html",{"error":errors,"show":True})
+            return render(request,"home.html",{"error":"<br>".join(errors),"show":True})
         else:
             return render(request,"home.html",{"success":" ","show":True})
-    if request.POST and 'login' in request.POST:
+    if request.POST and 'login' in request.POST and not request.user.is_authenticated:
         a,b=login(request)
-        print(a)
         if not a:
             return render(request,"home.html",{"error":b,"show":True})
         else:
@@ -27,7 +28,14 @@ def home(request):
     return render(request,"home.html",{})
 
 def posts(request):
-    posts=Post.objects.all()
+    if request.method=="GET" and 'searchb' in request.GET:
+        using,search=request.GET.get('using'),request.GET.get('search')
+        if using=="Tags":
+            posts=Post.tags_set.all().filter(tag__contains=search)
+        if using=="Text":
+            posts=Post.objects.filter(content__contains=search)
+    else:
+        posts=Post.objects.all()
     return render(request,"posts.html",{"posts":posts})
 
 def saved(request):
@@ -72,6 +80,7 @@ def about_team(request):
 def about_goals(request):
     return render(request,"about_goals.html",{})
 
+@login_required
 def create_post(request):
     if request.POST:
         data=request.POST
@@ -83,6 +92,9 @@ def create_post(request):
         c.save()
     return render(request,"create_post.html",{})
 
+
+
+@login_required
 def logout(request):
     auth_logout(request)
     return redirect('home')

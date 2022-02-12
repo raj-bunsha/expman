@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <!-- changes_r meta tags -->
+  <!-- required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -58,6 +58,11 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/posts">Posts</a>
           </li>
+          {%if request.user.is_authenticated%}
+          <li class="nav-item">
+            <a class="nav-link" href="create_post">Create new</a>
+          </li>
+          {%endif%}
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -145,23 +150,23 @@
             {%csrf_token%}
             <!-- FOR NAME  -->
             <div class="mb-3">
-              <label for="exampleInputEmail1" changes_r class="form-label">Your Name</label>
-              <input type="text" class="form-control" id="textInput" name="username" changes_r>
+              <label for="exampleInputEmail1" required class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="textInput" name="username" required>
             </div>
             <!-- FOR EMAIL  -->
             <div class="mb-3">
               <label for="InputEmail1" class="form-label" >Email address</label>
-              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" name="email" changes_r>
+              <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" name="email" required>
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <!-- FOR PASSWORD  -->
             <div class="mb-3">
               <label for="InputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="InputPassword1" name="password1" changes_r>
+              <input type="password" class="form-control" id="InputPassword1" name="password1" required>
             </div>
             <div class="mb-3">
               <label for="InputPassword2" class="form-label">Password</label>
-              <input type="password" class="form-control" id="InputPassword2" name="password2" changes_r>
+              <input type="password" class="form-control" id="InputPassword2" name="password2" required>
             </div>
             <!-- TO SUBMIT DATA TO BACKEND TO SIGNUP  -->
             <button type="submit" class="btn btn-primary" name="signup">Submit</button>
@@ -179,12 +184,12 @@
   </nav>
   {%if show%}
   {%if error%}
-  {%for er in error%}
+  
   <div class="alert alert-danger alter-dismissible fade show rmBorder" role="alert">
-    {{ er }}
+    {{error|safe}}
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
   </div>
-  {%endfor%}
+  
   {%elif success%}
   <div class="alert alert-success alter-dismissible fade show rmBorder" role="alert">
     Login/Sign up Successful
