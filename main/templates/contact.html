@@ -16,6 +16,12 @@ Contact
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="{%static 'css/util.css'%}">
 <link rel="stylesheet" type="text/css" href="{%static 'css/main.css'%}">
+<style>
+    .nav-link {
+        color: #FFFFFF;
+        display: inline;
+    }
+</style>
 {%endblock%}
 {%block content%}
 <div class="contact1">
@@ -29,22 +35,22 @@ Contact
                 Contact Us!
             </span>
 
-            <div class="wrap-input1 validate-input" data-validate = "Name is required.">
-                <input class="input1" type="text" name="name" placeholder="Name" >
+            <div class="wrap-input1 validate-input" data-validate="Name is required.">
+                <input class="input1" type="text" name="name" placeholder="Name">
                 <span class="shadow-input1"></span>
             </div>
 
-            <div class="wrap-input1 validate-input" data-validate = "Valid email is required.">
+            <div class="wrap-input1 validate-input" data-validate="Valid email is required.">
                 <input class="input1" type="text" name="email" placeholder="Email">
                 <span class="shadow-input1"></span>
             </div>
 
-            <div class="wrap-input1 validate-input" data-validate = "Subject is required.">
+            <div class="wrap-input1 validate-input" data-validate="Subject is required.">
                 <input class="input1" type="text" name="subject" placeholder="Subject">
                 <span class="shadow-input1"></span>
             </div>
 
-            <div class="wrap-input1 validate-input" data-validate = "Message is required. ">
+            <div class="wrap-input1 validate-input" data-validate="Message is required. ">
                 <textarea class="input1" name="message" placeholder="Message"></textarea>
                 <span class="shadow-input1"></span>
             </div>
@@ -73,7 +79,7 @@ Contact
 <script src="{%static 'vendor/select2/select2.min.js'%}"></script>
 <!--===============================================================================================-->
 <script src="{%static 'vendor/tilt/tilt.jquery.min.js'%}"></script>
-<script >
+<script>
     $('.js-tilt').tilt({
         scale: 1.1
     })
