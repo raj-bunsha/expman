@@ -58,35 +58,56 @@
   <div class="container my-3">
     <div class="row mb-2">
       <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary">IIITB</strong>
-            <h3 class="mb-0">Featured post</h3>
-            <div class="mb-1 text-muted">Jan 26</div>
-            <p class="card-text mb-auto">The Director talks about his Experience in IIITB.</p>
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+            id="readPost">
+            <div class="col p-4 d-flex flex-column position-static" id="ptContent">
+                <div>
+                    <b class="mb-2 text-danger needsInline">{{trending.0.tags_set.all.0.tag}}</b>
+                    <b class="mb-2 text-warning needsInline">{{trending.0.tags_set.all.1.tag}}</b>
+                    <b class="mb-2 text-success needsInline">{{trending.0.tags_set.all.2.tag}}</b>
+                </div>
+                <h3 class="mb-0">{{trending.0.title}}</h3>
 
-            <!-- now user will click continue reading to redirect to that topic  -->
-            <a href="#" class="stretched-link">Continue reading</a>
-          </div>
-          <div class="col-auto d-none d-lg-block">
+                <!-- RAJ WILL ENTER AUTHOR NAME HERE -->
 
-          </div>
-        </div>
-      </div>
+                <div class="mb-1 text-muted">{{trending.0.author.username}}</div>
+
+                <!-- RAJ WILL ENTER AUTHOR NAME HERE ENDS. -->
+                <div class="mb-1 text-muted">{{trending.0.date_created}} IST</div>
+                <p class="card-text mb-auto">{{trending.0.content|safe|truncatechars:500}}</p>
+
+                <!-- now user will click continue reading to redirect to that topic  -->
+                <a href="/posts/{{trending.0.id}}" class="stretched-links">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+
+            </div>
+        </div></div>
       <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-success">Design</strong>
-            <h3 class="mb-0">Raj Ki Dua hain</h3>
-            <div class="mb-1 text-muted">Feb 2</div>
-            <p class="mb-auto">Rohit designs home page for project share his Experience.</p>
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+            id="readPost">
+            <div class="col p-4 d-flex flex-column position-static" id="ptContent">
+                <div>
+                    <b class="mb-2 text-danger needsInline">{{trending.1.tags_set.all.0.tag}}</b>
+                    <b class="mb-2 text-warning needsInline">{{trending.1.tags_set.all.1.tag}}</b>
+                    <b class="mb-2 text-success needsInline">{{trending.1.tags_set.all.2.tag}}</b>
+                </div>
+                <h3 class="mb-0">{{trending.1.title}}</h3>
 
-            <!-- similarly user will click continue reading to redirect to that topic  -->
-            <a href="#" class="stretched-link">Continue reading</a>
-          </div>
-          <div class="col-auto d-none d-lg-block">
+                <!-- RAJ WILL ENTER AUTHOR NAME HERE -->
 
-          </div>
+                <div class="mb-1 text-muted">{{trending.1.author.username}}</div>
+
+                <!-- RAJ WILL ENTER AUTHOR NAME HERE ENDS. -->
+                <div class="mb-1 text-muted">{{trending.1.date_created}} IST</div>
+                <p class="card-text mb-auto">{{trending.1.content|safe|truncatechars:500}}</p>
+
+                <!-- now user will click continue reading to redirect to that topic  -->
+                <a href="/posts/{{trending.1.id}}" class="stretched-links">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+
+            </div>
         </div>
       </div>
     </div>

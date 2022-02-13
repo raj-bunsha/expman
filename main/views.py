@@ -5,6 +5,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from main.forms import RegisterForm
 from .models import *
+from django.db.models import Count
 from django.contrib.auth.decorators import *
 from django.views.decorators.csrf import *
 from django.shortcuts import get_object_or_404
@@ -12,6 +13,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 # Create your views here.
 def home(request):
+    trending=Post.objects.annotate(num_likes=Count("likes")).order_by("-num_likes")[:2]
+    print(trending)
     if request.POST and 'signup' in request.POST and not request.user.is_authenticated:
         a,b=signup(request)
         errors=[]
@@ -19,17 +22,17 @@ def home(request):
             for error in field.errors:
                 errors.append(error)
         if not a:
-            return render(request,"home.html",{"error":"<br>".join(errors),"show":True})
+            return render(request,"home.html",{"error":"<br>".join(errors),"show":True,"trending":trending})
         else:
             return redirect("profile")
-            return render(request,"home.html",{"success":" ","show":True})
+
     if request.POST and 'login' in request.POST and not request.user.is_authenticated:
         a,b=login(request)
         if not a:
-            return render(request,"home.html",{"error":b,"show":True})
+            return render(request,"home.html",{"error":b,"show":True,"trending":trending})
         else:
-            return render(request,"home.html",{"success":" ","show":True})
-    return render(request,"home.html",{})
+            return render(request,"home.html",{"success":" ","show":True,"trending":trending})
+    return render(request,"home.html",{"trending":trending})
 
 def posts(request):
     show=""
