@@ -2,7 +2,15 @@
 {%block title%}Read posts
 {%endblock%}
 {%block imports%}
+
+<head>
+    <script src="https://kit.fontawesome.com/f6dcf461c1.js" crossorigin="anonymous"></script>
+</head>
 <style>
+    .btn i:hover {
+        cursor: pointer;
+    }
+
     .ttleRead {
         display: flex;
         justify-content: center;
@@ -97,9 +105,25 @@
     <textarea name="cmtreadPost" id="cometRP" cols="190" rows="3" placeholder="Comment Something..."></textarea>
 </div>
 <div class="cmtReadPost">
-    <img
-        src="https://img.icons8.com/external-justicon-flat-justicon/32/000000/external-like-notifications-justicon-flat-justicon.png" />
-    <span>7</span>
+    <!-- OUR LIKE BUTTON  -->
+    <div class="btns">
+        <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fas fa-heart"></i><span> 7 </span> </Button>
+        <!-- HELLO RAJ WHEN YOU ENTER NO OF LIKES PLZ LEAVE A SPACE BETWEEN SPAN> AND NLIKES OTHERWISE IT WILL STICK TO THE LIKE BUTTON  -->
+    </div>
+    <script>
+        var btnvar1 = document.getElementById('btnh1');
+
+        function Toggle1() {
+            if (btnvar1.style.color == "red") {
+                btnvar1.style.color = "grey"
+            }
+            else {
+                btnvar1.style.color = "red"
+            }
+        }
+
+    </script>
+    <!-- OUR LIKE BUTTON ENDS  -->
     <div id="sbtCmt">
         <button class="btn btn-primary profile-button" type="button">Submit Comment</button>
     </div>
