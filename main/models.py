@@ -66,6 +66,11 @@ class Tags(models.Model):
     Post=models.ForeignKey(Post,on_delete=models.CASCADE)
     tag=models.CharField(max_length=15)
 
+class Search_history(models.Model):
+    user=models.TextField()
+    search=models.TextField()
+    def __str__(self) -> str:
+        return self.search
 # class Post(models.Model):
 #     date=models.DateTimeField("date published")
 #     content = models.TextField()
