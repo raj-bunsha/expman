@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login required.</title>
+    <meta http-equiv="refresh" content="5; url = /" />
+    <style>
+        
+        .error1 {
+            display: inline-block;
+            position: absolute;
+            /* border: 2px solid black; */
+            border-radius: 10px;
+            background-color: rgb(160, 160, 160);
+            margin: 200px 200px;
+            padding-left: 20%;
+            padding-right: 20%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+        .error2 {
+            display: inline-block;
+            /* border: 2px solid black; */
+            background-color: rgb(160, 160, 160);
+        }
+        .error3 {
+            display: inline-block;
+            /* border: 2px solid black; */
+            background-color: rgb(160, 160, 160);
+        }
+    </style>
 </head>
 <body>
-    <h2>Looks like you haven't logged in.</h2>
-    <h2>Click <a href="/">here</a> to go back.</h2>
+<div class="error1">
+        <div class="error2">
+            <h2>Looks like you haven't logged in.</h2>
+        </div>
+        <div class="error3">
+            <h2>You'll be redirected to home page in 3 seconds...</h2>
+        </div>
+</div>
+
 </body>
+
 </html>
