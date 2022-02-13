@@ -131,6 +131,7 @@ def logout(request):
     auth_logout(request)
     return redirect('home')
 
+@login_required
 def add_like(request,id):
     print(request.POST)
     post = get_object_or_404(Post, id=request.POST.get('like'))
@@ -141,6 +142,7 @@ def add_like(request,id):
 
     return HttpResponseRedirect(reverse('post', args=[str(id)]))
 
+@login_required
 def add_comment(request,id):
     post = get_object_or_404(Post, id=id)
     comment=Comment(author=request.user,Post=post,comment=request.POST['comment'])
