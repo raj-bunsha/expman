@@ -136,7 +136,7 @@
             </div>
         </div>
         <div class="mt-5 text-center">
-        <input onclick="console.log('clicked');" type="submit" class="btn btn-primary" value="Save profile"/>    
+        <input type="submit" class="btn btn-primary" value="Save profile"/>    
         </div>
         {%csrf_token%}
         </form>
@@ -146,13 +146,5 @@
 <!-- </form> -->
 </div>
 </div>
-<script>
-    function myfun()
-    {
-        console.log("clicked")
-        var b= document.createElement('a');
-        b.href="/posts"
-        b.click()
-    }
-</script>
+
 {%endblock%}

@@ -1,11 +1,15 @@
 from django.shortcuts import render,redirect
+from django.http import JsonResponse
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import authenticate
 from main.forms import RegisterForm
 from .models import *
-from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.decorators import *
+from django.views.decorators.csrf import *
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 def home(request):
     if request.POST and 'signup' in request.POST and not request.user.is_authenticated:
@@ -87,6 +91,7 @@ def profile(request):
         t.profession=cat
         t.bio=request.POST.get('bio')
         t.save()
+        return HttpResponseRedirect("/")
     return render(request,"profile.html",{})
 
 def contact(request):
@@ -102,12 +107,14 @@ def about_goals(request):
     return render(request,"about_goals.html",{})
 
 def readpost(request,id):
-    return render(request,"readpost.html",{"post":Post.objects.get(id=id)})
+    post=Post.objects.get(id=id)
+    return render(request,"readpost.html",{"post":post,"user_likes":post.likes.all(),"likes":post.number_of_likes(),"comments":post.comment_set.all()})
 
 @login_required
 def create_post(request):
     if request.POST:
         data=request.POST
+        print(data)
         t=Post(author=request.user,title=data.get('title'),content=data.get('content'))
         a,b,c=Tags(Post=t,tag=data.get('tag1')),Tags(Post=t,tag=data.get('tag2')),Tags(Post=t,tag=data.get('tag3'))
         t.save()
@@ -123,3 +130,19 @@ def error1(request):
 def logout(request):
     auth_logout(request)
     return redirect('home')
+
+def add_like(request,id):
+    print(request.POST)
+    post = get_object_or_404(Post, id=request.POST.get('like'))
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse('post', args=[str(id)]))
+
+def add_comment(request,id):
+    post = get_object_or_404(Post, id=id)
+    comment=Comment(author=request.user,Post=post,comment=request.POST['comment'])
+    comment.save()
+    return HttpResponseRedirect(reverse('post', args=[str(id)]))
