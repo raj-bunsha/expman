@@ -11,4 +11,4 @@ class RegisterForm(UserCreationForm):
         password1=self.cleaned_data.get("password1","")
         password2=self.cleaned_data["password2"]
         if password1!=password2:
-            raise forms.ValidationError(f"Passwords don't match")
+            raise forms.ValidationError(f"Passwords don't match.")
